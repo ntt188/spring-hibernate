@@ -1,15 +1,15 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>tungnguyen.fr</groupId>
-    <artifactId>spring</artifactId>
+    <groupId>fr.tungnguyen</groupId>
+    <artifactId>springhibernate</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring</name>
-    <description>test spring framework</description>
+    <name>springhibernate</name>
+    <description>Test Spring and Hibernate frameworks</description>
 
     <properties>
         <maven.compiler.source>1.7</maven.compiler.source>
-        <maven.compiler.target>1.7</maven.compiler.target>        
+        <maven.compiler.target>1.7</maven.compiler.target>
         <log4j.version>2.3</log4j.version>
     </properties>
     
