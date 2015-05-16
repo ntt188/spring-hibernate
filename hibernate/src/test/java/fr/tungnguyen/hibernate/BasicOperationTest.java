@@ -1,12 +1,12 @@
 package fr.tungnguyen.hibernate;
 
 import static java.util.Calendar.NOVEMBER;
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 import java.util.Date;
 import java.util.GregorianCalendar;
-import java.util.List;
 
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.junit.Test;
 
@@ -30,20 +30,14 @@ public class BasicOperationTest {
      * @throws Exception
      */
     @Test
-    public void testSave() throws Exception {
+    public void testSaveError() throws Exception {
         Session session = HibernateUtil.getSessionFactory().openSession();
-        executeSaveOperation(session);
-
-        @SuppressWarnings("unchecked")
-        List<Student> allStudent = session.createQuery("from Student").list();
-        assertEquals(1, allStudent.size());
-
-        Student student = allStudent.get(0);
-        assertEquals(FIRST_NAME, student.getFirstName());
-        assertEquals(LAST_NAME, student.getLastName());
-        assertEquals(BIRTHDAY, student.getBirthDay());
-
-        HibernateUtil.shutdown();
+        try {
+            executeSaveOperation(session);
+            fail("HibernateException have to be throwed");
+        } catch (HibernateException e) {
+            // OK
+        }
     }
 
     private void executeSaveOperation(final Session session) {

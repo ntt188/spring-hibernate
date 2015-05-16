@@ -3,7 +3,6 @@ package fr.tungnguyen.hibernate.model;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -26,7 +25,7 @@ public class Clazz {
     @Column(unique = true, nullable = false)
     private String name;
 
-    @OneToMany(cascade = { CascadeType.ALL }, mappedBy = "clazz")
+    @OneToMany(mappedBy = "clazz")
     private Set<Student> students;
 
     /**

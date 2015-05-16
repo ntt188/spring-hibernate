@@ -37,8 +37,6 @@ public class CreationClassTest {
         List<Clazz> allClazz = session.createQuery("from Clazz").list();
         assertEquals(1, allClazz.size());
         assertEquals(2, allClazz.get(0).getStudents().size());
-
-        HibernateUtil.shutdown();
     }
 
     private void createClazz(final Session session) {
@@ -46,15 +44,15 @@ public class CreationClassTest {
 
         Clazz clazz = new Clazz("superhero");
 
-        clazz.addStudent(createStudent(session, "Phuong Linh", "Tran", new GregorianCalendar(1990, NOVEMBER, 27).getTime()));
-        clazz.addStudent(createStudent(session, "The Tung", "Nguyen", new GregorianCalendar(1983, AUGUST, 18).getTime()));
+        clazz.addStudent(createStudent("Phuong Linh", "Tran", new GregorianCalendar(1990, NOVEMBER, 27).getTime()));
+        clazz.addStudent(createStudent("The Tung", "Nguyen", new GregorianCalendar(1983, AUGUST, 18).getTime()));
 
         session.save(clazz);
 
         session.getTransaction().commit();
     }
 
-    private Student createStudent(final Session session, final String firstName, final String lastName, final Date birthDay) {
+    private Student createStudent(final String firstName, final String lastName, final Date birthDay) {
         Student student = new Student();
         student.setFirstName(firstName);
         student.setLastName(lastName);
