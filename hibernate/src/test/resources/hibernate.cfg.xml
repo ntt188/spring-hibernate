@@ -25,5 +25,6 @@
         <property name="hbm2ddl.auto">create-drop</property>
 		
         <mapping class="fr.tungnguyen.hibernate.model.Student" />
+        <mapping class="fr.tungnguyen.hibernate.model.Clazz" />
 	</session-factory>
 </hibernate-configuration>

@@ -4,9 +4,12 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -20,13 +23,20 @@ public class Student {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true, nullable = false, insertable = true, updatable = true)
     private Long id;
+
     @Column(unique = false, nullable = false, insertable = true, updatable = true, length = 40)
     private String firstName;
+
     @Column(unique = false, nullable = false, insertable = true, updatable = true, length = 40)
     private String lastName;
+
     @Column(unique = false, nullable = false, insertable = true, updatable = true)
     @Temporal(TemporalType.DATE)
     private Date birthDay;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_clazz_clazz", nullable = false)
+    private Clazz clazz;
 
     /**
      * Constructeur
@@ -97,5 +107,21 @@ public class Student {
      */
     public void setBirthDay(final Date birthDay) {
         this.birthDay = birthDay;
+    }
+
+    /**
+     * Getter pour clazz
+     * @return la valeur du champ clazz
+     */
+    public Clazz getClazz() {
+        return clazz;
+    }
+
+    /**
+     * Setter pour clazz
+     * @param clazz La nouvelle valeur du champ clazz
+     */
+    public void setClazz(final Clazz clazz) {
+        this.clazz = clazz;
     }
 }
